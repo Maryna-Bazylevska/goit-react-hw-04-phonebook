@@ -26,10 +26,12 @@ function App() {
           name,
           number,
         };
-    
-        contacts.filter((item) => item.name === name).length > 0
-          ? alert(`${contact.name} is already in contacts`)
-          : setContacts([contact, ...contacts])
+     
+      if (  contacts.find((item) => item.name === name)){
+        alert(`${contact.name} is already in contacts`);
+        return
+      }
+           setContacts([contact, ...contacts])
       };
       
       const deleteContact = (contactId) => {
