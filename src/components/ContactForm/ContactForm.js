@@ -17,7 +17,7 @@ function ContactForm({ onSubmit }) {
         break;
 
       default:
-        break;
+        return;
     }
   };
   const handleSubmit = (e) => {
