@@ -7,16 +7,8 @@
  import {Wrapper} from './App.styles'
 
 function App() {
-//   const [contacts, setContacts] = useState([]);
-//   const [filter, setFilter] = useState ('');
-
-//   useEffect(() => {
-//   const savedContacts = JSON.parse(localStorage.getItem("contacts"));
-
-//   if (savedContacts) setContacts(savedContacts);
-// }, []);
 const [contacts, setContacts] = useState(()=>{
-  return JSON.parse(localStorage.getItem("contacts")) }
+  return JSON.parse(localStorage.getItem("contacts")) ?? []}
   
 );
 const [filter, setFilter] = useState ('');
@@ -29,10 +21,10 @@ const [filter, setFilter] = useState ('');
   const filterContacts = () => {
     return contacts.filter(({ name }) => name.toLowerCase().includes(filter.toLowerCase()),)
   };
-  const addContact = ({ name, tel })=>{
+  const addContact = ({ name, number })=>{
     const contact = {
       name,
-      tel,
+      number,
       id: nanoid(),
     };
 
@@ -43,22 +35,7 @@ const [filter, setFilter] = useState ('');
 
     setContacts([contact, ...contacts])
   };
-  // const addContact = ({name,number }) => {
-  //       const contact = {
-  //         id: nanoid(),
-  //         name,
-  //         number,
-  //       };
-  //     contacts.some((i) => i.name === name)
-  //     ? alert(`${name} is already in contacts`)
-  //     : setContacts([contact, ...contacts]);}
-      // if (  contacts.find((item) => item.name === name)){
-      //   alert(`${contact.name} is already in contacts`);
-      //   return
-      // }
-      //      setContacts([contact, ...contacts])
-      // };
-      
+ 
       const deleteContact = (contactId) => {
         setContacts(contacts.filter(
             (contact) => contact.id !== contactId

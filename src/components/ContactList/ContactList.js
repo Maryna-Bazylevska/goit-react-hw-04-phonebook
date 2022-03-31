@@ -3,15 +3,15 @@ import PropTypes from "prop-types";
 const ContactList = ({ items, onDeleteContact }) => {
   return (
     <List>
-      {items.map(({ id, name, number }) => (
-        <li key={id} className="listStyle">
+      {items.map((contact) => (
+        <li key={contact.id} className="listStyle">
           <Text className="TodoList__text">
-            {name}:{number}
+            {contact.name}:{contact.number}
           </Text>
           <Button
             type="button"
             className="TodoList__btn"
-            onClick={() => onDeleteContact(id)}
+            onClick={() => onDeleteContact(contact.id)}
           >
             Delete
           </Button>
